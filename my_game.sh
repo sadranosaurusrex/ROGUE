@@ -1,11 +1,10 @@
 #!/bin/bash
 
-# Compile the C files with required libraries
-gcc main.c menu.c UserFileCreator.c enemy.c map_plot.c -lm -lncursesw -lSDL2 -lSDL2_mixer -o my_game
+set -e
 
-# Check if compilation was successful
-if [ $? -eq 0 ]; then
-    echo "Compilation successful. Run ./my_game to start the game."
-else
-    echo "Compilation failed. Check for errors."
-fi
+echo "Building ROGUE game..."
+gcc -o game main.c menu.c UserFileCreator.c enemy.c map_plot.c -lm -lncursesw -lSDL2 -lSDL2_mixer
+
+echo "✓ Build successful!"
+echo "Starting game..."
+./game
